@@ -65,43 +65,42 @@ const Signup = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <View>
       <Text
         style={{
-          color: '#E5E1E1',
+          color: 'black',
           fontWeight: 'bold',
-          paddingTop: 50,
+          paddingTop: '15%',
+          paddingBottom: 20,
           fontSize: 25,
           marginBottom: 10,
         }}>
-        Molidu Education
+        Sign Up
       </Text>
-      <Image
-        source={require('../../../assets/images/login-icon.png')}
-        style={styles.image}
-      />
-      <View style={styles.bottom}>
+      
         <Input
           value={email}
           label="Email"
-          placeholder="Masukkan email anda"
+          placeholder="Input Email"
           onChangeText={nextValue => setEmail(nextValue)}
           style={styles.input}
         />
         <Input
           value={password}
           label="Password"
-          placeholder="Masukkan password anda"
-          caption="Minimal harus ada 6 huruf"
+          placeholder="Input Password"
+          caption="At Least 6 characters"
           accessoryRight={renderIcon}
           captionIcon={AlertIcon}
           secureTextEntry={secureTextEntry}
           onChangeText={nextValue => setPassword(nextValue)}
           style={styles.input}
         />
-        <Button onPress={() => onDaftar()}>Daftar</Button>
-        <TouchableOpacity style={{marginTop: 10}} onPress={() => navigation.navigate('LoginScreen')} >
-          <Text> Have account? Login</Text>
-        </TouchableOpacity>
+        <Button style={{marginTop: 20, width: '100%'}} onPress={() => onDaftar()}>Sign Up</Button>
+      </View>
+      <View>
+      <View></View>
+      <Text style={{ textAlign: 'center', marginTop: '63%' }}> Have an account? <Text onPress={() => navigation.navigate('LoginScreen')} style={styles.span}>Login</Text></Text>
       </View>
     </View>
   );
@@ -110,27 +109,20 @@ const Signup = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1890FF',
-    alignItems: 'center',
+    backgroundColor: '#FFF',
+    paddingLeft: 40,
+    paddingRight: 40
   },
-  bottom: {
-    flex: 2,
-    justifyContent: 'center',
-    alignContent: 'center',
-    backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-    width: '100%',
-  },
+ 
   input: {
     paddingBottom: 10,
-    backgroundColor: '#fff',
   },
-  textForgot: {
-    marginTop: 10,
-  },
+
+  span: {
+    fontWeight: 'bold',
+    color: '#1890FF'
+  }
+  
 });
 
 export default Signup;

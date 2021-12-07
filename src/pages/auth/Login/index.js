@@ -50,60 +50,60 @@ const Login = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text
+       <View>
+         <Text
         style={{
-          color: '#E5E1E1',
+          color: 'black',
           fontWeight: 'bold',
-          paddingTop: 50,
+          paddingTop: '35%',
+          paddingBottom: 20,
           fontSize: 25,
           marginBottom: 10,
         }}>
-        Molidu Education
+        Sign In
       </Text>
-      <Image
-        source={require('../../../assets/images/login-icon.png')}
-        style={styles.image}
-      />
-      <View style={styles.bottom}>
         <Input
           value={email}
           label="Email"
-          placeholder="Masukkan email anda"
+          placeholder="Input Email"
           onChangeText={nextValue => setEmail(nextValue)}
           style={styles.input}
         />
         <Input
           value={password}
           label="Password"
-          placeholder="Masukkan password anda"
-          caption="Minimal harus ada 6 huruf"
+          placeholder="Input Password"
+          caption="At least 6 characters"
           accessoryRight={renderIcon}
           captionIcon={AlertIcon}
           secureTextEntry={secureTextEntry}
           onChangeText={nextValue => setPassword(nextValue)}
           style={styles.input}
         />
-        <Button onPress={() => onLogin()}>Masuk</Button>
-        <TouchableOpacity onPress={() => alert('Silahkan reset email anda dengan mengirim pesan ke email: molidulearning@gmail.com')}><Text style={styles.textForgot}>Lupa password?</Text></TouchableOpacity>
-        
-      </View>
+        <Button style={{marginTop: 20, width: '100%'}} onPress={() => onLogin()}>Sign In</Button>
+        <TouchableOpacity onPress={() => alert('Silahkan reset email anda dengan mengirim pesan ke email: navalearning@gmail.com')}><Text style={styles.textForgot}>Forgot Password?</Text></TouchableOpacity>    
     </View>
-  );
-};
+    <View style={{justifyContent: 'flex-end'}}>
+      <Text style={styles.signup}>Don't have an account? <Text onPress={() => navigation.navigate('SignupScreen')} style={styles.span}>Create new one</Text></Text>
+    </View>
+    </View>
+    
+  )};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1890FF',
-    alignItems: 'center',
+    backgroundColor: '#FFF',
+    paddingLeft: 40,
+    paddingRight: 40
   },
   bottom: {
     flex: 2,
     justifyContent: 'center',
     alignContent: 'center',
     backgroundColor: '#fff',
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     width: '100%',
@@ -114,6 +114,14 @@ const styles = StyleSheet.create({
   textForgot: {
     marginTop: 10,
   },
+  signup: {
+    marginTop: '50%',
+    textAlign: 'center'
+  },
+  span: {
+    fontWeight: 'bold',
+    color: '#1890FF'
+  }
 });
 
 export default Login;

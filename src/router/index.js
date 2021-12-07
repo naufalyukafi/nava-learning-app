@@ -57,12 +57,27 @@ const Home = () => {
       </View>
     );
   }
- 
+  
   return(
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        // tabBarIcon: ({ focused, color, size }) => {
+        //   let iconName;
+        //   if (route.name === 'Chat') {
+        //     iconName = focused
+        //       ? 'message-square-outline'
+        //       : 'ios-information-circle-outline';
+        //   } else if (route.name === 'Settings') {
+        //     iconName = focused ? 'ios-list-box' : 'ios-list';
+        //   }
+        //   return <Icon name={iconName} size={size} fill={color} />;
+        // },
+        tabBarActiveTintColor: 'tomato',
+        tabBarInactiveTintColor: 'gray',
+      })}
+    >
       {/* <Tab.Screen name="Grup" component={RoomLessonScreen} /> */}
       {/* <Tab.Screen name="Pelajaran" component={} /> */}
-      <Tab.Screen name="Chat" component={LessonScreen} />
       {
         user.email === 'molidulearning@gmail.com' ?
         <>
@@ -81,6 +96,17 @@ const Home = () => {
           />
         </> :
         <>
+         <Tab.Screen
+          name="Chat"
+          component={ChatSiswa}
+          options={({navigation}) => ({
+            headerLeft: false,
+            headerTitle: 'Chat',
+            headerStyle: {backgroundColor: '#1890FF'},
+            headerTintColor: '#fff',
+            headerTitleAlign: 'center',
+          })}
+        />
           <Tab.Screen name="Mata Pelajaran" component={LessonScreen} />
           <Tab.Screen
             name="AbsensiSiswa"
@@ -155,14 +181,15 @@ const Router = () => {
           name="SignupScreen"
           component={SignupScreen}
           options={{
-            headerTitle: 'Daftar Akun',
+            headerTitle: false,
+            headerLeft: false
           }}
         />
         <Stack.Screen
           name="HomeScreen"
           component={Home}
           options={() => ({
-            headerTitle: 'Molidu Education',
+            headerTitle: 'Nava Education',
             headerLeft: false,
             headerStyle: {backgroundColor: '#1890FF'},
             headerTintColor: '#fff',

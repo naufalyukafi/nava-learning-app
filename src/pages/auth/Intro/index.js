@@ -24,63 +24,84 @@ const Intro = ({navigation}) => {
 
   return (
     <View style={styles.wrapper}>
-      <Text
+      {/* <Text
         style={{
           textAlign: 'center',
           color: '#E5E1E1',
           fontWeight: 'bold',
           fontSize: 25,
-          marginTop: 25,
+          marginTop: 2,
           marginBottom: 25,
         }}>
-        Molidu Education
-      </Text>
+        Nava Learning
+      </Text> */}
+      <View style={styles.top}>
       <Image
-        source={require('../../../assets/images/icon-image.png')}
+        source={require('../../../assets/images/welcome.png')}
         style={styles.image}
       />
+      </View>
       <View style={styles.bottom}>
-        <Button onPress={() => navigation.navigate('LoginScreen')}>
+        {/* <Button onPress={() => navigation.navigate('LoginScreen')}>
           Masuk
         </Button>
         <Text style={styles.textOr}>Atau</Text>
         <Button onPress={() => navigation.navigate('SignupScreen')}>
           Daftar
-        </Button>
-        <Button
-          style={styles.btnGoogle}
-          accessoryLeft={GoogleIcon}
-          onPress={() => onGoogleButtonPress()}>
-          Masuk dengan Google
-        </Button>
-        <Text style={styles.textPriv}>
-          Dengan masuk atau mendaftar, Anda menyetujui
-          <Text style={styles.span}> Ketentuan Layanan</Text> dan{' '}
-          <Text style={styles.span}>Kebijakan Privasi</Text>
+        </Button>     */}
+
+        <Text
+          style={{
+          textAlign: 'center',
+          color: 'black',
+          fontWeight: 'bold',
+          fontSize: 25,
+          marginTop: 1,
+          marginBottom: 25,
+        }}>
+          Nava learning
         </Text>
+        <Text
+          style={{
+          textAlign: 'center',
+          color: '#b4b4b4',
+          fontWeight: 'bold',
+          fontSize: 18,
+          marginBottom: 25
+        }}>
+          Make your online learning more easier and structurer!
+        </Text>
+        <View style={styles.btnCotnainer}>
+          <Button style={styles.button} onPress={() => navigation.navigate('LoginScreen')}>GET STARTED</Button>
+        </View>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
   wrapper: {
     flex: 1,
-    backgroundColor: '#1890FF',
+    // backgroundColor: '#1890FF',
     alignItems: 'center',
   },
   image: {
     marginBottom: 40,
   },
+  top: {
+    flex: 2,
+    backgroundColor: '#1890FF',
+    width: '100%',
+    borderBottomRightRadius: 55
+  },
   bottom: {
-    flex: 3,
+    flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
     backgroundColor: '#fff',
     paddingLeft: 20,
     paddingRight: 20,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderTopLeftRadius: 45,
     width: '100%',
   },
   textOr: {
@@ -98,6 +119,17 @@ const styles = StyleSheet.create({
     color: '#41A4FF',
     fontWeight: 'bold',
   },
+  btnCotnainer: {
+    flexDirection: 'row-reverse',
+  },
+  button: {
+    backgroundColor: '#ff6374',
+    borderRadius: 20,
+    borderColor: 'white',
+    paddingTop: 20,
+    paddingBottom: 20,
+    
+  }
 });
 
 export default Intro;
