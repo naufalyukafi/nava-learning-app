@@ -70,10 +70,10 @@ const AbsensiSiswa = ({navigation}) => {
         }}>
         Molidu Education
       </Text> */}
-      <Image
-        source={require('../../../../assets/images/presensi.png')}
+      {/* <Image
+        source={require('../../../../assets/images/attendance.png')}
         style={styles.image}
-      />
+      /> */}
       <View style={styles.bottom}>
         {
           attendance.forEach(item => {
@@ -109,7 +109,7 @@ const AbsensiSiswa = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1890FF',
+    backgroundColor: '#FFF',
     alignItems: 'center',
   },
   bottom: {
@@ -131,7 +131,8 @@ const styles = StyleSheet.create({
   },
   image: {
     marginBottom: 30,
-    marginTop: 80,
+    marginTop: 1,
+    height: 70,
   },
   bottomAbsensi: {
     marginBottom: 20,

@@ -39,7 +39,7 @@ const Signup = ({navigation}) => {
           .then(() => {
             Alert.alert(
               'Daftar Sukses',
-              'Selamat anda telah terdaftar di molidu',
+              'Selamat anda telah terdaftar di nava learning',
             );
             setEmail('');
             setPassword('');

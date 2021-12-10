@@ -162,6 +162,7 @@ const Chat = ({route}) => {
         renderSend={renderSend}
         renderBubble={renderBubble}
         renderSystemMessage={renderSystemMessage}
+//        style={{color: 'black'}}
         showUserAvatar
         alwaysShowSend
         scrollToBottom

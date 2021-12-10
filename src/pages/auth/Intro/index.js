@@ -16,7 +16,7 @@ const Intro = ({navigation}) => {
       // Sign-in the user with the credential
       await auth().signInWithCredential(googleCredential);
       await navigation.navigate('HomeScreen');
-      Alert.alert('Sukses Login!', 'Anda berhasil masuk akun molidu');
+      Alert.alert('Sukses Login!', 'Anda berhasil masuk');
     } catch (error) {
         Alert.alert('Login gagal'+ error);
     }

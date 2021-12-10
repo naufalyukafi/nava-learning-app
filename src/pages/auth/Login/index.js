@@ -32,7 +32,7 @@ const Login = ({navigation}) => {
       .then(() => {
         setEmail('');
         setPassword('');
-        Alert.alert('Sukses Login!', 'Anda berhasil masuk akun molidu');
+        Alert.alert('Sukses Login!', 'Anda berhasil masuk akun');
         navigation.navigate('HomeScreen');
       })
       .catch(error => {

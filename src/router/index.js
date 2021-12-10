@@ -152,14 +152,14 @@ const Router = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SplashScreen">
-        <Stack.Screen
+        {/* <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
           options={{
             headerTitle: false,
             headerTransparent: true,
           }}
-        />
+        /> */}
         <Stack.Screen
           name="IntroScreen"
           component={IntroScreen}

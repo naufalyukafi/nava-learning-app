@@ -78,8 +78,8 @@ const Lesson = ({navigation}) => {
   }
 
   return (
-    <ScrollView>
-      <View style={styles.wrapper}>
+    <ScrollView style={styles.wrapper}>
+      {/* <View style={styles.wrapper}> */}
         <View style={styles.wrapper__box}>
           {threadsLesson.map(item => (
             <TouchableOpacity
@@ -98,8 +98,8 @@ const Lesson = ({navigation}) => {
               <Text>{item.name}</Text>
             </TouchableOpacity>
           ))}
-        </View>
-        <Text style={styles.title__h1} category="h1">
+        {/* </View> */}
+        {/* <Text style={styles.title__h1} category="h1">
           Daftar Siswa
         </Text>
 
@@ -119,7 +119,7 @@ const Lesson = ({navigation}) => {
               </Text>
             </View>
           ))}
-        </View>
+        </View> */}
       </View>
     </ScrollView>
   );
@@ -127,19 +127,21 @@ const Lesson = ({navigation}) => {
 
 const styles = StyleSheet.create({
   wrapper: {
+    backgroundColor: '#fff',
     flex: 1,
     paddingLeft: 20,
     paddingRight: 20,
   },
   wrapper__box: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
+    flex: 1,
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
+    // flexWrap: 'wrap',
   },
   box: {
     backgroundColor: '#fff',
     padding: 20,
-    width: '46%',
+    width: '100%',
     borderRadius: 5,
     marginTop: 20,
     marginRight: 10,
