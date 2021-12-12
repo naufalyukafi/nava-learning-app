@@ -59,31 +59,19 @@ const Home = () => {
   }
   
   return(
-    <Tab.Navigator
-      screenOptions={({route}) => ({
-        // tabBarIcon: ({ focused, color, size }) => {
-        //   let iconName;
-        //   if (route.name === 'Chat') {
-        //     iconName = focused
-        //       ? 'message-square-outline'
-        //       : 'ios-information-circle-outline';
-        //   } else if (route.name === 'Settings') {
-        //     iconName = focused ? 'ios-list-box' : 'ios-list';
-        //   }
-        //   return <Icon name={iconName} size={size} fill={color} />;
-        // },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
-      })}
-    >
+    <Tab.Navigator>
       {/* <Tab.Screen name="Grup" component={RoomLessonScreen} /> */}
       {/* <Tab.Screen name="Pelajaran" component={} /> */}
       {
-        user.email === 'molidulearning@gmail.com' ?
+        user.email === 'yukafit@gmail.com' ?
         <>
+           <Tab.Screen
+              name="Chat"
+              component={ChatSiswa}
+            />
           <Tab.Screen name="Mata Pelajaran" component={LessonScreen} />
           <Tab.Screen
-            name="AbsensiGuru"
+            name="Absensi"
             component={AbsensiGuruScreen}
             options={{
               title: 'Absensi',
@@ -230,24 +218,7 @@ const Router = () => {
             headerTitleAlign: 'center',
           }}
         /> */}
-        <Stack.Screen
-          name="GrupGuru"
-          component={ChatSiswa}
-          options={({navigation}) => ({
-            headerLeft: false,
-            headerTitle: 'Grup Kelas',
-            headerStyle: {backgroundColor: '#1890FF'},
-            headerTintColor: '#fff',
-            headerTitleAlign: 'center',
-            headerRight: () => (
-              <Button
-                appearance="ghost"
-                accessoryLeft={StarIcon}
-                onPress={() => navigation.navigate('NewGrup')}
-              />
-            ),
-          })}
-        />
+        
         <Stack.Screen
           name="GrupSiswa"
           component={ChatSiswa}

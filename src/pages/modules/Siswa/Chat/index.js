@@ -6,15 +6,30 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-import {Divider, List, ListItem, Button, Text} from '@ui-kitten/components';
+import {Divider, List, ListItem, Button, Text, Icon} from '@ui-kitten/components';
 import firestore from '@react-native-firebase/firestore';
 import Loading from '../../../../components/Loading';
 import moment from 'moment';
 import 'moment/locale/id';
+import auth from '@react-native-firebase/auth';
 
 const ChatSiswa = ({navigation}) => {
   const [threads, setThreads] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+  
+  // Handle user state changes
+  const onAuthStateChanged = user => {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  };
+
+  const StarIcon = (props) => (
+    <Icon {...props} name='plus' />
+  );
+  
+  
   useEffect(() => {
     const unsubscribe = firestore()
       .collection('Threads')
@@ -38,8 +53,14 @@ const ChatSiswa = ({navigation}) => {
           setLoading(false);
         }
       });
+
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, [])
 
   if (loading) {
     return <Loading />;
@@ -82,6 +103,21 @@ const ChatSiswa = ({navigation}) => {
           keyExtractor={item => item._id}
           style={{marginBottom: 20}}
         />
+        {
+          user.email === "yukafit@gmail.com" && (
+          //   <Button
+          //     style={styles.floatingButton}
+          //     onPress={() => navigation.navigate('FotoAbsensiSiswa')}>
+          //   +
+          // </Button>   
+           <Button
+              style={styles.floatingButton}
+              appearance='filled'
+              accessoryLeft={StarIcon}
+              onPress={() => navigation.navigate('NewGrup')}
+           />
+          )
+        }
       </View>
     </>
   );
@@ -112,6 +148,14 @@ const styles = StyleSheet.create({
   border: {
     borderBottomColor: 'blue',
     borderBottomWidth: 2
+  },
+  floatingButton:{
+    width: 60,  
+    height: 60,   
+    borderRadius: 30,                                    
+    position: 'absolute',                                          
+    bottom: 10,                                                    
+    right: 10, 
   }
 
 });

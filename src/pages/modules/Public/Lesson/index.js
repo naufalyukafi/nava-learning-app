@@ -7,7 +7,7 @@ import {
   FlatList,
   ScrollView,
 } from 'react-native';
-import {Divider, List, ListItem, Text, Button} from '@ui-kitten/components';
+import {Divider, List, ListItem, Text, Button, Icon} from '@ui-kitten/components';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import Loading from '../../../../components/Loading';
@@ -29,6 +29,10 @@ const Lesson = ({navigation}) => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   };
+
+  const StarIcon = (props) => (
+    <Icon {...props} name='plus' />
+  );
 
   useEffect(async () => {
     const unsubscribe = firestore()
@@ -77,7 +81,10 @@ const Lesson = ({navigation}) => {
     return <Loading />;
   }
 
+  console.log(currentUser.email)
+
   return (
+    <>
     <ScrollView style={styles.wrapper}>
       {/* <View style={styles.wrapper}> */}
         <View style={styles.wrapper__box}>
@@ -86,7 +93,7 @@ const Lesson = ({navigation}) => {
               style={styles.box}
               key={item._id}
               onPress={() => {
-                if (currentUser.email === 'molidulearning@gmail.com') {
+                if (currentUser.email === 'yukafit@gmail.com') {
                   navigation.navigate('RoomLesson', {threadLesson: item});
                 } else {
                   navigation.navigate('RoomStudent', {threadLesson: item});
@@ -122,6 +129,22 @@ const Lesson = ({navigation}) => {
         </View> */}
       </View>
     </ScrollView>
+    {
+          currentUser.email === "yukafit@gmail.com" && (
+          //   <Button
+          //     style={styles.floatingButton}
+          //     onPress={() => navigation.navigate('FotoAbsensiSiswa')}>
+          //   +
+          // </Button>
+           <Button
+              style={styles.floatingButton}
+              appearance='filled'
+              accessoryLeft={StarIcon}
+              onPress={() => navigation.navigate('NewLesson')}
+           />
+          )
+        }
+    </>
   );
 };
 
@@ -181,6 +204,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
     marginTop: 10,
   },
+  floatingButton:{
+    width: 60,  
+    height: 60,   
+    borderRadius: 30,                                    
+    position: 'absolute',                                          
+    bottom: 10,                                                    
+    right: 10, 
+  }
 });
 
 export default Lesson;
