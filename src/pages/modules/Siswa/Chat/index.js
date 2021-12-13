@@ -103,7 +103,7 @@ const ChatSiswa = ({navigation}) => {
           keyExtractor={item => item._id}
           style={{marginBottom: 20}}
         />
-        {
+        {/* {
           user.email === "yukafit@gmail.com" && (
           //   <Button
           //     style={styles.floatingButton}
@@ -117,7 +117,7 @@ const ChatSiswa = ({navigation}) => {
               onPress={() => navigation.navigate('NewGrup')}
            />
           )
-        }
+        } */}
       </View>
     </>
   );
